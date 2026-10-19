@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaBeca | Portal FinTech Estudiantil</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Nova<span>Beca</span></div>
+    <nav>
+      <button class="nav-btn active" onclick="mostrarSeccion('solicitud')">Evaluación de Beca</button>
+      <button class="nav-btn" onclick="mostrarSeccion('cartera')">Mi Cartera Digital</button>
+      <button class="nav-btn" onclick="mostrarSeccion('auditoria')">Estado del Fondo</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Resumen superior -->
+    <section class="status-banner">
+      <div>
+        <h2>Fondo Universitario Activo</h2>
+        <p>Convocatoria Semestral Transparente</p>
+      </div>
+      <div class="budget-box">
+        <span>Presupuesto Disponible:</span>
+        <strong id="presupuesto-display">$150,000 MXN</strong>
+      </div>
+    </section>
+
+    <!-- Sección 1: Evaluación de Beca -->
+    <section id="seccion-solicitud" class="card">
+      <h3>Simulador de Elegibilidad de Beca</h3>
+      <p class="subtitle">Ingresa tus datos académicos y socioeconómicos para calcular tu puntaje.</p>
+
+      <form id="beca-form" onsubmit="evaluarBeca(event)">
+        <div class="form-group">
+          <label for="matricula">Matrícula Estudiantil:</label>
+          <input type="text" id="matricula" placeholder="Ej. E2601001" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="promedio">Promedio General (0 - 100):</label>
+            <input type="number" id="promedio" min="0" max="100" placeholder="Ej. 90" required>
+          </div>
+
+          <div class="form-group">
+            <label for="ingreso">Ingreso Familiar Mensual (MXN):</label>
+            <input type="number" id="ingreso" min="0" placeholder="Ej. 12000" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="codigo-postal">Código Postal de Residencia:</label>
+          <input type="text" id="codigo-postal" placeholder="Ej. 97000" required>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="privacidad" required>
+          <label for="privacidad">Acepto el aviso de privacidad institucional para el uso académico de mis datos.</label>
+        </div>
+
+        <button type="submit" class="btn-primary">Evaluar Solicitud</button>
+      </form>
+
+      <div id="resultado-beca" class="result-box hidden"></div>
+    </section>
+
+    <!-- Sección 2: Cartera Digital -->
+    <section id="seccion-cartera" class="card hidden">
+      <h3>Activación de Tarjeta NovaBeca</h3>
+      <p class="subtitle">Activa tu cuenta bancaria estudiantil sin comisiones ocultas para recibir tu apoyo.</p>
+
+      <div class="wallet-status">
+        <p>Estado actual de la tarjeta: <strong id="estado-tarjeta">Inactiva</strong></p>
+      </div>
+
+      <button type="button" class="btn-primary" onclick="activarCartera()">Activar Cuenta Gratuita</button>
+      <div id="mensaje-cartera" class="result-box hidden"></div>
+    </section>
+
+    <!-- Sección 3: Estado del Fondo y Transparencia -->
+    <section id="seccion-auditoria" class="card hidden">
+      <h3>Parámetros de Transparencia del Algoritmo</h3>
+      <ul class="audit-list">
+        <li><strong>Promedio mínimo requerido:</strong> 85 puntos</li>
+        <li><strong>Techo de ingreso familiar preferente:</strong> $18,000 MXN</li>
+        <li><strong>Criterio de evaluación:</strong> 100% mérito académico y vulnerabilidad económica</li>
+        <li><strong>Política de datos:</strong> Sin rastreo externo ni cargos automáticos</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
+
